@@ -8,4 +8,6 @@ public class Inventory {
 
     private Long productId;
     private Integer stock;
+    private Date lastModifiedDate;
+    private String orderId;
 }

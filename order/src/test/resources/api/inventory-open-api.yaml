@@ -31,6 +31,8 @@ paths:
                     value:
                       - productId: 1
                         stock: 1
+                        lastModifiedDate: value
+                        orderId: A string
             description: Get list of inventories
         operationId: GetInventory
         summary: Get list of inventories
@@ -58,6 +60,8 @@ paths:
                       value:
                         productId: 1
                         stock: 1
+                        lastModifiedDate: value
+                        orderId: A string
               description: inventories with specified id
           operationId: GetInventoryById
           summary: Get Inventory by id
@@ -74,6 +78,8 @@ paths:
                       value:
                         productId: 1
                         stock: 1
+                        lastModifiedDate: value
+                        orderId: A string
             required: true
           parameters:
             - examples:
@@ -96,6 +102,8 @@ paths:
                       value:
                         productId: 1
                         stock: 1
+                        lastModifiedDate: value
+                        orderId: A string
               description: Changed Inventory
           operationId: PatchInventory
           summary: Patch existing Inventory
@@ -133,6 +141,8 @@ paths:
                         value:
                           productId: 1
                           stock: 1
+                          lastModifiedDate: value
+                          orderId: A string
                 description: DecreaseStock Operation
             operationId: DecreaseStock
             summary: DecreaseStock
@@ -159,6 +169,8 @@ paths:
                         value:
                           productId: 1
                           stock: 1
+                          lastModifiedDate: value
+                          orderId: A string
                 description: FindInventory Query
             operationId: FindInventory
             summary: FindInventory
@@ -176,9 +188,17 @@ components:
         stock:
           description: stock of this Inventory
           type: integer
+        lastModifiedDate:
+          description: lastModifiedDate of this Inventory
+          type: string
+        orderId:
+          description: orderId of this Inventory
+          type: string
       example:
         productId: 1
         stock: 1
+        lastModifiedDate: value
+        orderId: A string
 tags:
   - name: Inventory
     description: Inventory resource

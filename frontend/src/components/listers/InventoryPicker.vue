@@ -20,6 +20,12 @@
                             <v-list-item-subtitle>
                                 Stock :  {{item.stock }}
                             </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                LastModifiedDate :  {{item.lastModifiedDate }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                OrderId :  {{item.orderId }}
+                            </v-list-item-subtitle>
                         </v-list-item-content>
 
                         <v-list-item-action>
@@ -71,6 +77,10 @@
                 if(val != undefined) {
                     var arr = this.list[val]._links.self.href.split('/');
                     obj['productId'] = arr[4]; 
+                    
+                    
+                    
+                    
                     
                     
                     

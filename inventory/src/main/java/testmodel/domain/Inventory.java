@@ -30,6 +30,18 @@ public class Inventory  {
     
     
     private Integer stock;
+    
+    
+    
+    
+    
+    private Date lastModifiedDate;
+    
+    
+    
+    
+    
+    private String orderId;
 
     @PostPersist
     public void onPostPersist(){

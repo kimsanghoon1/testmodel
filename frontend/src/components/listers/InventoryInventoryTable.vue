@@ -68,6 +68,8 @@
                 [
                     { text: "productId", value: "productId" },
                     { text: "stock", value: "stock" },
+                    { text: "lastModifiedDate", value: "lastModifiedDate" },
+                    { text: "orderId", value: "orderId" },
                 ],
             inventory : [],
             newValue: {},
@@ -87,6 +89,8 @@
             this.newValue = {
                 'productId': 0,
                 'stock': 0,
+                'lastModifiedDate': '2023-11-08',
+                'orderId': '',
             }
         },
         methods: {
