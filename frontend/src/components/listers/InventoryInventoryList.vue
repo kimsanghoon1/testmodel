@@ -120,7 +120,7 @@
             this.newValue = {
                 'productId': 0,
                 'stock': 0,
-                'lastModifiedDate': '2023-11-08',
+                'lastModifiedDate': '2023-11-09',
                 'orderId': '',
             }
         },

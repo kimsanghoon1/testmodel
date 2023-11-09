@@ -12,169 +12,166 @@ info:
     name: MIT License
     url: 'https://opensource.org/licenses/MIT'
 paths:
-  '':
-    inventories:
-      summary: Global operations on inventories
-      get:
-        tags:
-          - inventories
-        responses:
-          '200':
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/Inventory'
-                examples:
-                  inventories_json:
-                    value:
-                      - productId: 1
-                        stock: 1
-                        lastModifiedDate: value
-                        orderId: A string
-            description: Get list of inventories
-        operationId: GetInventory
-        summary: Get list of inventories
-      '{id}':
-        summary: Specific operation on inventories
-        get:
-          parameters:
-            - examples:
-                '1':
-                  value: 1
-              name: productId
-              description: Inventory name
+  /inventories:
+    summary: Global operations on inventories
+    get:
+      tags:
+        - inventories
+      responses:
+        '200':
+          content:
+            application/json:
               schema:
-                type: integer
-              in: path
-              required: true
-          responses:
-            '200':
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/Inventory'
-                  examples:
-                    '1':
-                      value:
-                        productId: 1
-                        stock: 1
-                        lastModifiedDate: value
-                        orderId: A string
-              description: inventories with specified id
-          operationId: GetInventoryById
-          summary: Get Inventory by id
-          description: Get Inventory by id
-        patch:
-          requestBody:
-            content:
-              application:
-                json:
-                  schema:
-                    $ref: '#/components/schemas/Inventory'
-                  examples:
-                    '1':
-                      value:
-                        productId: 1
-                        stock: 1
-                        lastModifiedDate: value
-                        orderId: A string
-            required: true
-          parameters:
-            - examples:
-                '1':
-                  value: 1
-              name: productId
-              description: Inventory name
+                type: array
+                items:
+                  $ref: '#/components/schemas/Inventory'
+              examples:
+                inventories_json:
+                  value:
+                    - productId: 1
+                      stock: 1
+                      lastModifiedDate: value
+                      orderId: A string
+          description: Get list of inventories
+      operationId: GetInventory
+      summary: Get list of inventories
+  '/inventories/{id}':
+    summary: Specific operation on inventories
+    get:
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: productId
+          description: Inventory name
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
               schema:
-                type: integer
-              in: path
-              required: true
-          responses:
-            '200':
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/Inventory'
-                  examples:
-                    '1':
-                      value:
-                        productId: 1
-                        stock: 1
-                        lastModifiedDate: value
-                        orderId: A string
-              description: Changed Inventory
-          operationId: PatchInventory
-          summary: Patch existing Inventory
-        parameters:
-          - name: id
-            description: Inventory id
+                $ref: '#/components/schemas/Inventory'
+              examples:
+                '1':
+                  value:
+                    productId: 1
+                    stock: 1
+                    lastModifiedDate: value
+                    orderId: A string
+          description: inventories with specified id
+      operationId: GetInventoryById
+      summary: Get Inventory by id
+      description: Get Inventory by id
+    patch:
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: integer
-            in: path
-            required: true
-        update:
-          summary: decrease stock operation on inventories
-          get:
-            parameters:
-              - name: productId
-                description: ProductId
-                schema:
-                  type: integer
-                in: query
-                required: false
-              - name: qty
-                description: Qty
-                schema:
-                  type: integer
-                in: query
-                required: false
-            responses:
-              '200':
-                content:
-                  application/json:
-                    schema:
-                      $ref: '#/components/schemas/Inventory'
-                    examples:
-                      '1':
-                        value:
-                          productId: 1
-                          stock: 1
-                          lastModifiedDate: value
-                          orderId: A string
-                description: DecreaseStock Operation
-            operationId: DecreaseStock
-            summary: DecreaseStock
-            description: DecreaseStock
-      search:
-        findInventory:
-          summary: findInventory query on inventories
-          get:
-            parameters:
-              - name: name
-                description: Name
-                schema:
-                  type: integer
-                in: query
-                required: false
-            responses:
-              '200':
-                content:
-                  application/json:
-                    schema:
-                      $ref: '#/components/schemas/Inventory'
-                    examples:
-                      '1':
-                        value:
-                          productId: 1
-                          stock: 1
-                          lastModifiedDate: value
-                          orderId: A string
-                description: FindInventory Query
-            operationId: FindInventory
-            summary: FindInventory
-            description: FindInventory
+              $ref: '#/components/schemas/Inventory'
+            examples:
+              '1':
+                value:
+                  productId: 1
+                  stock: 1
+                  lastModifiedDate: value
+                  orderId: A string
+        required: true
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: productId
+          description: Inventory name
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+              examples:
+                '1':
+                  value:
+                    productId: 1
+                    stock: 1
+                    lastModifiedDate: value
+                    orderId: A string
+          description: Changed Inventory
+      operationId: PatchInventory
+      summary: Patch existing Inventory
+    parameters:
+      - name: id
+        description: Inventory id
+        schema:
+          type: integer
+        in: path
+        required: true
+  '/inventories/{id}/update':
+    summary: decrease stock operation on inventories
+    get:
+      parameters:
+        - name: productId
+          description: ProductId
+          schema:
+            type: integer
+          in: query
+          required: false
+        - name: qty
+          description: Qty
+          schema:
+            type: integer
+          in: query
+          required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+              examples:
+                '1':
+                  value:
+                    productId: 1
+                    stock: 1
+                    lastModifiedDate: value
+                    orderId: A string
+          description: DecreaseStock Operation
+      operationId: DecreaseStock
+      summary: DecreaseStock
+      description: DecreaseStock
+  /inventories/search/findInventory:
+    summary: findInventory query on inventories
+    get:
+      parameters:
+        - name: name
+          description: Name
+          schema:
+            type: integer
+          in: query
+          required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+              examples:
+                '1':
+                  value:
+                    productId: 1
+                    stock: 1
+                    lastModifiedDate: value
+                    orderId: A string
+          description: FindInventory Query
+      operationId: FindInventory
+      summary: FindInventory
+      description: FindInventory
 components:
   schemas:
     Inventory:
